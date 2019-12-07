@@ -16,6 +16,18 @@ fun main(args: Array<String>) {
     println("starting instructions:")
     println(instructions)
 
+    val result = runComputer(instructions)
+
+    println("final instruction values:")
+    println(result)
+}
+
+fun runComputer(inputInstructions: ArrayList<Int>): List<Int> {
+
+    // create clone of input so that we do not have to reset the input array
+    val instructions = ArrayList<Int>()
+    inputInstructions.forEach { instructions.add(it) }
+
     var programCounter = 0
     var keepTheDreamAlive = true
     while (keepTheDreamAlive and (programCounter < instructions.size)) {
@@ -74,9 +86,7 @@ fun main(args: Array<String>) {
                 keepTheDreamAlive = false
             }
         }
-
     }
 
-    println("final instruction values:")
-    println(instructions)
+    return instructions
 }
