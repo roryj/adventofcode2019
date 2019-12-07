@@ -13,10 +13,8 @@ fun main(args: Array<String>) {
     instructions.set(1, 12)
     instructions.set(2, 2)
 
+    println("starting instructions:")
     println(instructions)
-
-    // loop through each instruction, identifying what we should do
-    var currentInstructionType = InstructionType.NONE
 
     var programCounter = 0
     var keepTheDreamAlive = true
