@@ -9,8 +9,8 @@ import kotlin.math.min
 //
 // we want to keep track of every location where we go through, and compare against what is being processed
 
-val wire1Path = listOf<String>("R8", "U5", "L5", "D3")
-val wire2Path = listOf<String>("U7", "R6", "D4", "L4")
+val wire1Path = listOf<String>("R75", "D30", "R83", "U83", "L12", "D49", "R71", "U7", "L72")
+val wire2Path = listOf<String>("U62", "R66", "U55", "R34", "D71", "R55", "D58", "R83")
 val wire1Points = getAllWireTouchPoints(wire1Path)
 val wire2Points = getAllWireTouchPoints(wire2Path)
 
@@ -88,7 +88,7 @@ enum class Direction {
 
 class Point(val x: Int, val y: Int) {
     fun getManhattanDistance(): Int {
-        return this.x + this.y;
+        return Math.abs(this.x) + Math.abs(this.y);
     }
 
     override fun equals(other: Any?): Boolean {
