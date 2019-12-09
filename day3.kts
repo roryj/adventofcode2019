@@ -1,6 +1,5 @@
-import java.util.*
+import java.util.Objects
 import kotlin.collections.HashMap
-import kotlin.collections.HashSet
 import kotlin.math.min
 
 // we want to keep track of every location where we go through, and compare against what is being processed
@@ -25,14 +24,14 @@ fun part2(wire1Points: Map<Point, Int>, wire2Points: Map<Point, Int>) {
     println("starting part2")
     var combinedStepCount = Int.MAX_VALUE
 
-    wire1Points. forEach { point, p1Step ->
-//        println("Looking for intersect on $point")
+    wire1Points.forEach { point, p1Step ->
+        //        println("Looking for intersect on $point")
         // check to see if that point is seen by the second wire
         if (wire2Points.containsKey(point)) {
             println("Found intersect in second wire")
             val p2Step = wire2Points.getOrDefault(point, Int.MAX_VALUE)
             println("found intersect @ ${point}. Total step count: ${p1Step + p2Step}")
-            combinedStepCount = min(combinedStepCount,  p1Step + p2Step)
+            combinedStepCount = min(combinedStepCount, p1Step + p2Step)
             println("new min combined step count: ${combinedStepCount}")
         }
     }
@@ -68,7 +67,7 @@ fun getAllWireTouchPoints(commands: List<String>): Map<Point, Int> {
     println("processing wire touch points")
 
     // start at 0,0
-    var currentPoint = Point(0,0)
+    var currentPoint = Point(0, 0)
     var visitedPoints = HashMap<Point, Int>()
     var currentStep = 1
 
@@ -144,4 +143,5 @@ class Point(val x: Int, val y: Int) {
         return Objects.hash(this.x, this.y)
     }
 }
+
 data class Movement(val direction: Direction, val steps: Int)
